@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include Cognito SDK from a CDN -->
+    <script src="https://unpkg.com/amazon-cognito-identity-js@6.1.1/dist/amazon-cognito-identity.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+
+        <section class="auth-section" id="authSection">
+            <h2>Login / Register</h2>
+            <input type="email" id="username" placeholder="Email (Username)" autocomplete="username">
+            <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+            <button id="loginButton">Login</button>
+            <button id="registerButton">Register</button>
+            <div id="confirmUi" style="display:none;">
+                <input type="text" id="verificationCode" placeholder="Verification Code">
+                <button id="confirmRegisterButton">Confirm Registration</button>
+            </div>
+            <p id="authStatus"></p>
+        </section>
+
+        <section class="app-section" id="appSection" style="display:none;">
+            <div class="welcome-banner">
+                <span>Welcome, <b id="currentUser"></b>!</span>
+                <button id="logoutButton">Logout</button>
+            </div>
+
+            <div class="upload-section">
+                <h3>Upload New Receipt</h3>
+                <input type="file" id="receiptFile" accept="image/png, image/jpeg, image/jpg">
+                <button id="uploadButton">Upload</button>
+                <p id="uploadStatus"></p>
+            </div>
+
+            <div class="log-section">
+                <h3>Expense Log</h3>
+                <table id="expenseTable">
+                    <thead>
+                        <tr>
+                            <th>Transaction Date</th>
+                            <th>Total Cost</th>
+                            <th>Upload Time</th>
+                            <th>Receipt Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Expense items will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
